@@ -1,0 +1,28 @@
+{
+  "name": "dependency-inject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "built/index.js",
+  "scripts": {
+    "test": "tsc && ava"
+  },
+  "ava": {
+    "files": [
+      "built/**/*.test.js"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ascoders/dependency-inject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ascoders/dependency-inject/issues"
+  },
+  "homepage": "https://github.com/ascoders/dependency-inject#readme",
+  "devDependencies": {
+    "ava": "^0.18.2",
+    "typescript": "^2.2.1"
+  }
+}
