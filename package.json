@@ -2,9 +2,10 @@
   "name": "dependency-inject",
   "version": "1.0.0",
   "description": "",
-  "main": "built/index.js",
+  "main": "built/bundle.js",
   "scripts": {
-    "test": "tsc && ava"
+    "test": "tsc && ava",
+    "bundle": "tsc && webpack --config built/webpack.config.js"
   },
   "ava": {
     "files": [
@@ -23,6 +24,7 @@
   "homepage": "https://github.com/ascoders/dependency-inject#readme",
   "devDependencies": {
     "ava": "^0.18.2",
-    "typescript": "^2.2.1"
+    "typescript": "^2.2.1",
+    "webpack": "^2.2.1"
   }
 }
