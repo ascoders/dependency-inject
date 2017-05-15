@@ -39,9 +39,13 @@ export default class Container {
             // 将其中所有标注注入的字段替换为注入值
             Object.defineProperty(instance, propertyKey, {
                 enumerable: true,
-                writable: true,
                 configurable: true,
-                value: this.instances.get(injectClass)
+                get: () => {
+                    return this.instances.get(injectClass)
+                },
+                set: (newValue: any) => {
+                    instance.propertyKey = newValue
+                }
             })
         }
 
