@@ -1,6 +1,6 @@
 import { injectSymbol } from './handlers'
 
-export default <T>(injectClass: T) => (target: any, propertyKey: string | symbol, descriptor: PropertyDescriptor) => {
+export default <T>(injectClass: T) => (target: any, propertyKey: string | symbol, descriptor?: PropertyDescriptor) => {
     descriptor.enumerable = true
     descriptor.configurable = true
     descriptor.writable = true
