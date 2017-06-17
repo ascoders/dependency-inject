@@ -1,5 +1,7 @@
 # DependencyInject
 
+> [Live Demo](https://jsfiddle.net/yp90Lep9/15/)
+
 ```typescript
 import { Container, inject } from 'dependency-inject'
 
