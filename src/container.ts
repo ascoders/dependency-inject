@@ -36,7 +36,6 @@ export default class Container {
         }
 
         for (let [propertyKey, injectClass] of instance[injectSymbol]) {
-            console.log(Object.getOwnPropertyDescriptor(instance, propertyKey))
             // 将其中所有标注注入的字段替换为注入值
             Object.defineProperty(instance, propertyKey, {
                 enumerable: true,
