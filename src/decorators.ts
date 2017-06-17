@@ -1,4 +1,4 @@
-import { injectSymbol } from './handlers'
+import { globalState } from './utils'
 
 export default <T>(injectClass: T) => (target: any, propertyKey: string | symbol, descriptor?: PropertyDescriptor) => {
     // fix babel 无法 definePropery 的问题
@@ -9,13 +9,13 @@ export default <T>(injectClass: T) => (target: any, propertyKey: string | symbol
     }
 
     // 这个字段用来存储所有可能从注入中获取的数据
-    if (!target[injectSymbol]) {
-        Object.defineProperty(target, injectSymbol, {
+    if (!target[globalState.injectSymbol]) {
+        Object.defineProperty(target, globalState.injectSymbol, {
             enumerable: true,
             configurable: true,
             value: new Map()
         })
     }
 
-    target[injectSymbol].set(propertyKey, injectClass)
+    target[globalState.injectSymbol].set(propertyKey, injectClass)
 }

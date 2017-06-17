@@ -9,6 +9,8 @@ class GlobalState {
    * 所有通过 get 访问过的 class 实例
    */
   instances = new WeakMap()
+
+  injectSymbol = Symbol()
 }
 
 let globalState = new GlobalState()

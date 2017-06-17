@@ -1,4 +1,3 @@
-import { injectSymbol } from './handlers'
 import { globalState } from "./utils"
 
 interface normalObject {
@@ -30,11 +29,11 @@ export default class Container {
         const instance = globalState.instances.get(getClass)
 
         // 如果这个类没有 inject 过，就不会存在这个 symbol，直接返回实例
-        if (!instance[injectSymbol]) {
+        if (!instance[globalState.injectSymbol]) {
             return instance
         }
 
-        for (let [propertyKey, injectClass] of instance[injectSymbol]) {
+        for (let [propertyKey, injectClass] of instance[globalState.injectSymbol]) {
             // 将其中所有标注注入的字段替换为注入值
             Object.defineProperty(instance, propertyKey, {
                 enumerable: true,
