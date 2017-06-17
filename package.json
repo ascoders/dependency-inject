@@ -1,11 +1,11 @@
 {
   "name": "dependency-inject",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "main": "built/index.js",
   "scripts": {
     "test": "tsc && ava",
-    "prepublish": "rm -rf built && tsc && babel built --out-dir built",
+    "prepublish": "rm -rf built && tsc && babel built --out-dir built && npm run build",
     "build": "webpack --config built/scripts/webpack.config.js"
   },
   "ava": {
