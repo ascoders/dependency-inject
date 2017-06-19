@@ -13,9 +13,9 @@ export function injectFactory(obj: {
     container.set(obj[key], instance)
   })
 
-  const injectObj = Object.keys(obj).reduce((obj, key) => {
-    obj[key] = container.get(obj[key])
-    return obj
+  const injectObj = Object.keys(obj).reduce((result, key) => {
+    result[key] = container.get(obj[key])
+    return result
   }, {} as any)
 
   return injectObj
