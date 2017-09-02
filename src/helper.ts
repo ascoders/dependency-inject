@@ -15,12 +15,12 @@ export declare type ICombineActions<T> = {
 export function injectFactory<T>(obj: ICombineActions<T>): T {
   const container = new Container()
   Object.keys(obj).forEach(key => {
-    let instance: any = new obj[key]()
+    let instance: any = new (obj as any)[key]()
     container.set((obj as any)[key], instance)
   })
 
   const injectObj = Object.keys(obj).reduce((result, key) => {
-    result[key] = container.get(obj[key])
+    result[key] = container.get((obj as any)[key])
     return result
   }, {} as any)
 
