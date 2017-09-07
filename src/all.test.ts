@@ -1,5 +1,5 @@
 import test from 'ava'
-import {Container, inject} from './index'
+import { Container, inject, injectFactory } from './index'
 
 class Store {
     num = 1
@@ -26,20 +26,44 @@ test('can be injected', t => {
     t.true(store.num === 2)
 })
 
-test('No interference between instances', t => {
-    const containerA = new Container()
-    containerA.set(Store, new Store())
-    containerA.set(Action, new Action())
-    const actionA = containerA.get(Action)
-    const storeA = containerA.get(Store)
+// test('No interference between instances', t => {
+//     const containerA = new Container()
+//     containerA.set(Store, new Store())
+//     containerA.set(Action, new Action())
+//     const actionA = containerA.get(Action)
+//     const storeA = containerA.get(Store)
 
-    const containerB = new Container()
-    containerB.set(Store, new Store())
-    containerB.set(Action, new Action())
-    const actionB = containerB.get(Action)
-    const storeB = containerB.get(Store)
+//     const containerB = new Container()
+//     containerB.set(Store, new Store())
+//     containerB.set(Action, new Action())
+//     const actionB = containerB.get(Action)
+//     const storeB = containerB.get(Store)
 
-    actionB.setNum(3)
-    t.true(storeA.num === 1)
-    t.true(storeB.num === 3)
+//     actionB.setNum(3)
+//     t.true(storeA.num === 1)
+//     t.true(storeB.num === 3)
+// })
+
+test('injectFactory', t => {
+    const result = injectFactory({
+        Store,
+        Action
+    })
+
+    result.Action.setNum(2)
+    t.true(result.Store.num === 2)
+})
+
+test('injectFactory nested object', t => {
+    const result: any = injectFactory({
+        group: {
+            Store
+        },
+        Action
+    })
+
+    console.log(123, result)
+
+    result.Action.setNum(2)
+    t.true(result.group.Store.num === 2)
 })

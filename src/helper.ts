@@ -14,13 +14,23 @@ export declare type ICombineActions<T> = {
  */
 export function injectFactory<T>(obj: ICombineActions<T>): T {
   const container = new Container()
+
   Object.keys(obj).forEach(key => {
-    let instance: any = new (obj as any)[key]()
-    container.set((obj as any)[key], instance)
+    if (typeof (obj as any)[key] === 'object') {
+      // 如果元素是对象，不做收集
+    } else {
+      let instance: any = new (obj as any)[key]()
+      container.set((obj as any)[key], instance)
+    }
   })
 
   const injectObj = Object.keys(obj).reduce((result, key) => {
-    result[key] = container.get((obj as any)[key])
+    if (typeof (obj as any)[key] === 'object') {
+      // 如果元素是对象，递归
+      result[key] = injectFactory((obj as any)[key])
+    } else {
+      result[key] = container.get((obj as any)[key])
+    }
     return result
   }, {} as any)
 
