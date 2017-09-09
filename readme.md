@@ -30,3 +30,50 @@ const action = container.get(Action)
 action.setNum(2)
 console.log(store.num) // 2
 ```
+
+# Simple useage by injectFactory
+
+```typescript
+import { injectFactory } from 'dependency-inject'
+class Store {
+    num = 1
+}
+
+class Action {
+    @inject(Store)
+    private store: Store
+
+    setNum(num: number) {
+        this.store.num = num
+    }
+}
+
+const stores = injectFactory({Store, Action})
+// stores.Store.num === 1
+// stores.Action.setNum
+```
+
+## nested object
+
+```typescript
+import { injectFactory } from 'dependency-inject'
+class Store {
+    num = 1
+}
+
+class Action {
+    @inject(Store)
+    private store: Store
+
+    setNum(num: number) {
+        this.store.num = num
+    }
+}
+
+const stores = injectFactory({
+    groupA: Store,
+    groupB: {
+        groupC: Action
+    }
+})
+```

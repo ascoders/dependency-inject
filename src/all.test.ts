@@ -62,8 +62,6 @@ test('injectFactory nested object', t => {
         Action
     })
 
-    console.log(123, result)
-
     result.Action.setNum(2)
     t.true(result.group.Store.num === 2)
 })
