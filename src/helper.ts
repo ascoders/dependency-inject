@@ -8,11 +8,15 @@ export declare type ICombineActions<T> = {
   [P in keyof T]?: IObjectType<T[P]>
 }
 
+type Partial<T> = {
+  [P in keyof T]?: T[P];
+}
+
 /**
  * 快速实例化，key: string value: Class
  * 可以将内部 inject 正确注入
  */
-export function injectFactory<T>(obj: ICombineActions<T>): T {
+export function injectFactory<T>(obj: ICombineActions<T>): Partial<T> {
   const container = new Container()
 
   Object.keys(obj).forEach(key => {

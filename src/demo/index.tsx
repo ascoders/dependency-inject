@@ -14,10 +14,8 @@ class Action {
   }
 }
 
-const result: any = injectFactory({
-  group: {
-    Store
-  },
+const result = injectFactory({
+  Store,
   Action
 })
 
