@@ -1,6 +1,6 @@
 {
   "name": "dependency-inject",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "",
   "main": "built/index.js",
   "scripts": {
@@ -40,7 +40,7 @@
   },
   "run-react": {
     "entrys": [
-      "src/demo/index.tsx"
+      "src/index"
     ],
     "dlls": [
       "react",
