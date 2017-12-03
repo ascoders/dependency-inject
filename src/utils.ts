@@ -1,8 +1,7 @@
 const tag = "ascoders-dependency-inject"
 
-const globalOrWindow = (typeof self === 'object' && self.self === self && self) ||
-  (typeof global === 'object' && global.global === global && global) ||
-  this
+const globalOrWindow: any = (typeof self === 'object' && self.self === self && self) ||
+  (typeof global === 'object' && global.global === global && global)
 
 class GlobalState {
   /**

@@ -51,8 +51,8 @@ test('injectFactory', t => {
     Action
   })
 
-  result.Action.setNum(2)
-  t.true(result.Store.num === 2)
+  result!.Action!.setNum(2)
+  t.true(result!.Store!.num === 2)
 })
 
 test('injectFactory cycle', t => {
