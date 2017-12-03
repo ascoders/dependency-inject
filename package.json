@@ -5,9 +5,9 @@
   "main": "built/index.js",
   "scripts": {
     "test": "tsc && ava",
-    "start": "run-react start",
+    "start": "run-react develop",
     "prepublish": "rm -rf built && tsc && babel built --out-dir built && npm run build",
-    "build": "webpack --config built/scripts/webpack.config.js"
+    "build": "run-react production"
   },
   "types": "src/index.ts",
   "ava": {
@@ -34,7 +34,7 @@
     "babel-preset-stage-0": "^6.22.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "run-react": "^2.0.9",
+    "run-react": "^2.2.2",
     "typescript": "^2.6.2",
     "webpack": "^3.5.6"
   },
@@ -45,6 +45,10 @@
     "dlls": [
       "react",
       "react-dom"
-    ]
+    ],
+    "production": {
+      "path": "built",
+      "filename": "bundle.js"
+    }
   }
 }
