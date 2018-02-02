@@ -1,7 +1,7 @@
 import Container from "./container"
 
 export declare interface IObjectType<T> {
-  new (): T
+  new(): T
 }
 
 export declare type ICombineActions<T> = {

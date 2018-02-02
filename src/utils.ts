@@ -1,5 +1,7 @@
 const tag = "ascoders-dependency-inject"
 
+declare var global: any
+
 const globalOrWindow: any = (typeof self === 'object' && self.self === self && self) ||
   (typeof global === 'object' && global.global === global && global)
 
