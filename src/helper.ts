@@ -20,7 +20,7 @@ function collectGet(container: Container, obj: any) {
     if (typeof obj[key] === 'object') {
       collectGet(container, obj[key])
     } else {
-      let instance: any = new obj[key]()
+      const instance: any = new obj[key]()
       container.set(obj[key], instance)
     }
   })
